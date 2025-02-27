@@ -1,5 +1,6 @@
 import { useRouter } from "expo-router";
 import { Text, View } from "react-native";
+import { Button } from "tamagui";
 
 export default function Index() {
   const router = useRouter();
@@ -12,6 +13,9 @@ export default function Index() {
       }}
     >
       <Text>Prolly gonna just use index as the auth page</Text>
+      <Button onPress={() => router.push("/transactions")}>
+        Go transaction history
+      </Button>
       <Text>Edit app/index.tsx to edit this screen.</Text>
     </View>
   );
