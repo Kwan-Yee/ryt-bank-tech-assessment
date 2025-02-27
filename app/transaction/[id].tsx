@@ -1,26 +1,23 @@
 import { useLocalSearchParams } from "expo-router";
 import {
-  View,
   Text,
   YStack,
   XStack,
   Card,
   Separator,
   Circle,
-  Button,
   Spinner,
 } from "tamagui";
 import {
-  MapPin,
   Calendar,
   Tag,
   CreditCard,
-  Users,
   FileText,
 } from "@tamagui/lucide-icons";
 import { ScrollView } from "react-native";
 import { useTransactionStore } from "@/store";
 import { useEffect } from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function TransactionDetailScreen() {
   const { id } = useLocalSearchParams();
@@ -48,12 +45,14 @@ export default function TransactionDetailScreen() {
     </XStack>
   );
 
+  const insets = useSafeAreaInsets();
+
   return (
     <ScrollView>
       {isFetchingTransactionItem ? (
         <YStack f={1} jc="center" ai="center">
-          <Spinner size="large" color="$blue10" />
-          <Text mt="$2" color="$blue10">
+          <Spinner size="large" color="$gray8" />
+          <Text mt="$2" color="$gray8">
             Loading...
           </Text>
         </YStack>

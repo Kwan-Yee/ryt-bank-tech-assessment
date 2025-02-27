@@ -1,3 +1,6 @@
+import { Href } from "expo-router";
+import { NavigationOptions } from "expo-router/build/global-state/routing";
+
 export interface ITransactionItem {
   id: string;
   merchant: string;
@@ -10,8 +13,15 @@ export interface ITransactionItem {
 
 export interface ITransactionStore {
   // auth
-  isAuth: boolean;
+  hasAuth: boolean;
+  isAuthenticating: boolean;
+  setIsAuthenticating: (value: boolean) => void;
   setAuth: (value: boolean) => void;
+  logout: ({
+    navigate,
+  }: {
+    navigate: (href: Href, options?: NavigationOptions) => void;
+  }) => void;
 
   // transactions
   transactionHistoryData: ITransactionItem[] | null;

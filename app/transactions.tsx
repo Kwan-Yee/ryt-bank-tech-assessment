@@ -14,6 +14,9 @@ import {
 import { ChevronRight, LogOut, TestTube } from "@tamagui/lucide-icons";
 import { useEffect } from "react";
 import { useTransactionStore } from "@/store";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { ITransactionItem } from "@/store/types";
+import { handleLogout } from "@/store/reducers/handle-logout";
 
 //TODO: do better in styling, right now it's all inline
 export default function TransactionsScreen() {
@@ -22,6 +25,7 @@ export default function TransactionsScreen() {
     fetchTransactionHistory,
     transactionHistoryData,
     isFetchingTransactionHistory,
+    logout,
   } = useTransactionStore();
   useEffect(() => {
     fetchTransactionHistory();
@@ -32,13 +36,17 @@ export default function TransactionsScreen() {
         <Text fontSize={24} fontWeight="bold">
           Recent Transactions
         </Text>
-        <Button size="$3" chromeless onPress={() => {}} icon={LogOut} />
+        <Button
+          size="$3"
+          chromeless
+          onPress={() => logout({ navigate: router.replace })}
+          icon={LogOut}
+        />
       </XStack>
       <Separator />
     </YStack>
   );
-
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }: { item: ITransactionItem }) => (
     <Card
       mb="$2"
       p="$4"
@@ -74,12 +82,14 @@ export default function TransactionsScreen() {
     </Card>
   );
 
+  const insets = useSafeAreaInsets();
+
   return (
-    <YStack f={1} bg="$background">
+    <YStack f={1} bg="$background" pt={insets.top}>
       {isFetchingTransactionHistory ? (
         <YStack ai="center">
-          <Spinner size="large" color="$blue10" />
-          <Text mt="$2" color="$blue10">
+          <Spinner size="large" color="$gray8" />
+          <Text mt="$2" color="$gray8">
             Loading...
           </Text>
         </YStack>
