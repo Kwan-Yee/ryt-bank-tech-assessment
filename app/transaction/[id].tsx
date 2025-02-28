@@ -77,7 +77,6 @@ export default function TransactionDetailScreen() {
                     {selectedTransactionItem?.amount ?? 0 < 0 ? "-" : "+"}$
                   </Text>
                 </Circle>
-
                 <YStack ai="center">
                   <Text fontSize={32} fontWeight="bold">
                     ${Math.abs(selectedTransactionItem?.amount ?? 0).toFixed(2)}

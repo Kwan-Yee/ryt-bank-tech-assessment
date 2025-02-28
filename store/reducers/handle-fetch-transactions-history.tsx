@@ -10,12 +10,10 @@ export const handleFetchTransactionHistory = async (
   });
 
   // mock fetch
-
   try {
     const data: ITransactionItem[] | null = await new Promise((res) =>
       setTimeout(() => res([...mockHistory]), 500)
     );
-    console.log("data: ", data);
     set((s) => {
       s.isFetchingTransactionHistory = false;
       s.transactionHistoryData = data;

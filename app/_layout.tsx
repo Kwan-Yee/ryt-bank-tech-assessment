@@ -3,22 +3,9 @@ import { TamaguiProvider } from "tamagui";
 import { tamaguiConfig } from "../tamagui.config";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { useFonts } from "expo-font";
-import { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TouchableOpacity } from "react-native";
 
 export default function RootLayout() {
-  const [fontsLoaded] = useFonts({
-    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
-    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
-  });
-  useEffect(() => {
-    if (fontsLoaded) {
-      // Font loaded
-    }
-  }, [fontsLoaded]);
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <TamaguiProvider config={tamaguiConfig}>
@@ -28,7 +15,7 @@ export default function RootLayout() {
             <Stack.Screen
               name="transactions"
               options={{
-                title: "Transactions",
+                title: "History",
                 headerStyle: {
                   backgroundColor: "#f4f4f5",
                 },

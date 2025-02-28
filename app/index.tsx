@@ -1,18 +1,9 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import * as LocalAuthentication from "expo-local-authentication";
-import {
-  Button,
-  Text,
-  YStack,
-  useTheme,
-  XStack,
-  Spinner,
-} from "tamagui";
-import {
-  Calendar,
-} from "@tamagui/lucide-icons";
+import { Button, Text, YStack, useTheme, XStack, Spinner } from "tamagui";
+import { Calendar } from "@tamagui/lucide-icons";
 import { useTransactionStore } from "../store";
+import { authenticate } from "@/helpers/auth";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -20,42 +11,6 @@ export default function LoginScreen() {
   const { setAuth, isAuthenticating, setIsAuthenticating } =
     useTransactionStore();
   const [errorMessage, setErrorMessage] = useState("");
-
-  async function authenticate() {
-    setIsAuthenticating(true);
-    try {
-      const hasHardware = await LocalAuthentication.hasHardwareAsync();
-      if (!hasHardware) {
-        throw new Error(
-          "This device does not support biometric authentication"
-        );
-      }
-
-      const isEnrolled = await LocalAuthentication.isEnrolledAsync();
-      if (!isEnrolled) {
-        throw new Error("No biometrics enrolled on this device");
-      }
-
-      const result = await LocalAuthentication.authenticateAsync({
-        promptMessage: "Authenticate to access your account",
-        fallbackLabel: "Use passcode",
-      });
-
-      if (result.success) {
-        setAuth(true);
-        setIsAuthenticating(false);
-        router.push("/transactions");
-      } else {
-        throw new Error("Authentication failed");
-      }
-    } catch (error) {
-      setErrorMessage(error.message);
-      setIsAuthenticating(false);
-    } finally {
-      setAuth(false);
-      setIsAuthenticating(false);
-    }
-  }
 
   return (
     <YStack f={1} jc="center" ai="center" bg="$background" p="$4">
@@ -87,7 +42,14 @@ export default function LoginScreen() {
           color="white"
           size="$4"
           w="100%"
-          onPress={authenticate}
+          onPress={() =>
+            authenticate({
+              setIsAuthenticating,
+              setAuth,
+              setErrorMessage,
+              router,
+            })
+          }
           disabled={isAuthenticating}
         >
           {isAuthenticating ? (

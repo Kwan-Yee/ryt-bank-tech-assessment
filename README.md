@@ -7,11 +7,12 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```bash
    npm install
    ```
-2. run the project 
+
+2. run the project
 
    ```
    npm run ios // for ios
-   npm run 
+   npm run
    ```
 
 # Design Thinking
@@ -19,7 +20,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 1. **Scopes**
 
    - Screen 1: Login page
-     - biometrics of choice: faceId
+     - biometrics of choice: passcode
    - Screen 2: Transaction history
      - list of transactions
      - masked transaction amount

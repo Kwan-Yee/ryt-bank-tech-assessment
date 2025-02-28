@@ -26,6 +26,7 @@ export const useTransactionStore = create<ITransactionStore>()(
     // transaction slice
     transactionHistoryData: [],
     selectedTransactionItem: null,
+    isRefreshing: false,
     isFetchingTransactionHistory: false,
     isFetchingTransactionItem: false,
     fetchTransactionHistory: async () => handleFetchTransactionHistory(set),
