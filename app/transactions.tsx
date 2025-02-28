@@ -1,10 +1,6 @@
 import { useRouter } from "expo-router";
 import { FlatList, RefreshControl } from "react-native";
-import {
-  Text,
-  YStack,
-  Spinner,
-} from "tamagui";
+import { Text, YStack, Spinner } from "tamagui";
 import { useEffect } from "react";
 import { useTransactionStore } from "@/store";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -13,13 +9,13 @@ import { renderItem } from "@/components/list-item";
 
 //TODO: do better in styling, right now it's all inline
 export default function TransactionsScreen() {
-  const router = useRouter();
   const {
     fetchTransactionHistory,
     transactionHistoryData,
     isFetchingTransactionHistory,
-    isRefreshing,
+    isRefreshingTransactionHistory,
     logout,
+    refreshTransactionHistory,
   } = useTransactionStore();
   useEffect(() => {
     fetchTransactionHistory();
@@ -44,9 +40,12 @@ export default function TransactionsScreen() {
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
             contentContainerStyle={{ padding: 16 }}
-            // refreshControl={
-            //   <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
-            // }
+            refreshControl={
+              <RefreshControl
+                refreshing={isRefreshingTransactionHistory}
+                onRefresh={refreshTransactionHistory}
+              />
+            }
           />
         </YStack>
       )}

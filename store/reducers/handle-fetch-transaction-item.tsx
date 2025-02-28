@@ -14,7 +14,6 @@ export const handleFetchTransactionItem = async ({
   });
 
   // mock fetch
-  let transactionItem: ITransactionItem | null = null;
   try {
     const data: ITransactionItem | null = await new Promise((res) =>
       setTimeout(

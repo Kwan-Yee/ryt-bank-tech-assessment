@@ -26,9 +26,10 @@ export interface ITransactionStore {
   // transactions
   transactionHistoryData: ITransactionItem[] | null;
   selectedTransactionItem: ITransactionItem | null;
-  isRefreshing: boolean;
+  isRefreshingTransactionHistory: boolean;
   isFetchingTransactionHistory: boolean;
   isFetchingTransactionItem: boolean;
+  refreshTransactionHistory: () => Promise<void>;
   fetchTransactionHistory: () => Promise<void>;
   fetchTransactionItem: ({ id }: { id: string }) => Promise<void>;
 }

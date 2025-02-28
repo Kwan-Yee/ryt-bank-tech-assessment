@@ -20,7 +20,8 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 1. **Scopes**
 
    - Screen 1: Login page
-     - biometrics of choice: passcode
+     - biometrics: passcode, faceid, fingerprint
+     - error handling of auth error
    - Screen 2: Transaction history
      - list of transactions
      - masked transaction amount
@@ -29,15 +30,15 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
      - pull-to-refresh to update
        list
      - each list item shows: amount, data, description, type
+     - network error handling
    - Screen 3: Transaction details
      - Details: amount, date, description,type, from who
    - Screen 4 : Settings
-     - [bonus] paginated list (mixed category)
-     - [bonus] virtualised list (mixed category)
+     - ~~[bonus] paginated list (mixed category)~~ [virtualisation abstracted with the use of tamagui list, no need to recreate window redundantly]
+     - ~~[bonus] virtualised list (mixed category)~~ [virtualisation abstracted with the use of tamagui list, no need to recreate window redundantly]
      - [bonus] enable filtering (category), sorting (date asc, dsc), search
-     - [bonus] refresh setting in real-time
-     - enable network error experience
-     - enable auth error experience (needs an automatic time out so the user can still login after a while)
+     - ~~[bonus] refresh setting in real-time~~ [no need]
+     - ~~enable network error experience~~
 
 2. **Tools stack**
 
