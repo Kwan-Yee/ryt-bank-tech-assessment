@@ -93,7 +93,7 @@ export default function TransactionsScreen() {
   return (
     <YStack f={1} bg="$background" pt={insets.top}>
       {isFetchingTransactionHistory ? (
-        <YStack ai="center">
+        <YStack f={1} ai="center" jc="center">
           <Spinner size="large" color="$gray8" />
           <Text mt="$2" color="$gray8">
             Loading...
@@ -106,9 +106,7 @@ export default function TransactionsScreen() {
             data={transactionHistoryData}
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
-            stickyHeaderIndices={[0]}
             contentContainerStyle={{ padding: 16 }}
-            // ListHeaderComponent={renderHeader}
             // refreshControl={
             //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             // }
