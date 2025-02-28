@@ -31,7 +31,14 @@ export default function TransactionsScreen() {
     fetchTransactionHistory();
   }, []);
   const renderHeader = () => (
-    <YStack p="$4" space="$4">
+    <YStack
+      marginHorizontal="$2"
+      p="$5"
+      gap="$4"
+      elevation={6}
+      bg="$background"
+      borderRadius="$4"
+    >
       <XStack jc="space-between" ai="center">
         <Text fontSize={24} fontWeight="bold">
           Recent Transactions
@@ -43,7 +50,6 @@ export default function TransactionsScreen() {
           icon={LogOut}
         />
       </XStack>
-      <Separator />
     </YStack>
   );
   const renderItem = ({ item }: { item: ITransactionItem }) => (
@@ -53,7 +59,7 @@ export default function TransactionsScreen() {
       bg="$background"
       onPress={() => router.push(`/transaction/${item.id}`)}
     >
-      <XStack space="$4" ai="center">
+      <XStack gap="$4" ai="center">
         <Text>XX</Text>
         <YStack f={1}>
           <Text fontWeight="bold" color="$color" fontSize={16}>
@@ -94,16 +100,20 @@ export default function TransactionsScreen() {
           </Text>
         </YStack>
       ) : (
-        <FlatList
-          data={transactionHistoryData}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
-          contentContainerStyle={{ padding: 16 }}
-          ListHeaderComponent={renderHeader}
-          // refreshControl={
-          //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          // }
-        />
+        <YStack f={1}>
+          {renderHeader()}
+          <FlatList
+            data={transactionHistoryData}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            stickyHeaderIndices={[0]}
+            contentContainerStyle={{ padding: 16 }}
+            // ListHeaderComponent={renderHeader}
+            // refreshControl={
+            //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            // }
+          />
+        </YStack>
       )}
     </YStack>
   );
