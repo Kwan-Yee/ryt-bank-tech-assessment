@@ -34,5 +34,15 @@ export const useTransactionStore = create<ITransactionStore>()(
     refreshTransactionHistory: async () => handleRefreshTransactionHistory(set),
     fetchTransactionItem: async ({ id }) =>
       handleFetchTransactionItem({ id, set }),
+
+    // toast
+    // handleShowToast = () => {
+      //   showToast({
+      //     message: "Your message appears here!",
+      //     type: "success",
+      //     duration: 3000,
+      //   });
+      //   console.log("Toast triggered"); // Add logging to verify function call
+      // };
   }))
 );

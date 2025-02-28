@@ -1,11 +1,13 @@
 import { useRouter } from "expo-router";
 import { FlatList, RefreshControl } from "react-native";
-import { Text, YStack, Spinner } from "tamagui";
+import { Text, YStack, Spinner, Button } from "tamagui";
 import { useEffect } from "react";
 import { useTransactionStore } from "@/store";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { renderHeader } from "@/components/list-header";
 import { renderItem } from "@/components/list-item";
+import { Toast, useToastController } from "@tamagui/toast";
+import { useCustomToast } from "@/context/toast";
 
 //TODO: do better in styling, right now it's all inline
 export default function TransactionsScreen() {
@@ -22,6 +24,7 @@ export default function TransactionsScreen() {
   }, []);
 
   const insets = useSafeAreaInsets();
+  const { showToast } = useCustomToast()!;
 
   return (
     <YStack f={1} bg="$background" pt={insets.top}>
@@ -35,6 +38,7 @@ export default function TransactionsScreen() {
       ) : (
         <YStack f={1}>
           {renderHeader({ logout })}
+          <Button onPress={() => {}}>Show toast</Button>
           <FlatList
             data={transactionHistoryData}
             renderItem={renderItem}

@@ -32,4 +32,9 @@ export interface ITransactionStore {
   refreshTransactionHistory: () => Promise<void>;
   fetchTransactionHistory: () => Promise<void>;
   fetchTransactionItem: ({ id }: { id: string }) => Promise<void>;
+
+  // toast
+  // handleShowToast = () => {
+
+  // }
 }
