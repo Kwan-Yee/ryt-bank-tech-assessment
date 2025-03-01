@@ -14,7 +14,8 @@ export const handleRefreshTransactionHistory = async ({
     s.isRefreshingTransactionHistory = true;
   });
 
-  //mock fetch, ideally with filters for queries on time elapsed since last fetch
+  // mock fetch, ideally with filters for queries on time elapsed since last fetch
+  // if there is an api client, should can use the network checking in the api client itself
   try {
     // Check network state before making the call
     const networkState = await NetInfo.fetch();

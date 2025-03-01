@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Button, Text, YStack, useTheme, XStack, Spinner } from "tamagui";
-import { Calendar } from "@tamagui/lucide-icons";
+import { Banknote } from "@tamagui/lucide-icons";
 import { useTransactionStore } from "../store";
 import { authenticate } from "@/helpers/auth";
 
@@ -21,14 +21,14 @@ export default function LoginScreen() {
           alt="Bank Logo"
           mb="$6"
         /> */}
-        <Calendar size={18} color="$orange10" />
+        <Banknote size={100} color="$blue7" />
 
         <Text fontSize={28} fontWeight="bold" mb="$2" color="$color">
           Welcome
         </Text>
 
         <Text fontSize={16} mb="$6" ta="center" color="$color" o={0.7}>
-          Sign in using your biometric credentials to access your account
+          Biometric Auth
         </Text>
 
         {errorMessage ? (
