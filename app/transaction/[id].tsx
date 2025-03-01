@@ -14,9 +14,11 @@ import { useTransactionStore } from "@/store";
 import { useEffect } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import React from "react";
+import { useCustomToast } from "@/context/toast";
 
 export default function TransactionDetailScreen() {
   const { id } = useLocalSearchParams();
+  const { showToast } = useCustomToast()!;
   const extractId = typeof id === "string" ? id : id[0];
   const {
     fetchTransactionItem,
@@ -24,7 +26,7 @@ export default function TransactionDetailScreen() {
     selectedTransactionItem,
   } = useTransactionStore();
   useEffect(() => {
-    fetchTransactionItem({ id: extractId });
+    fetchTransactionItem({ id: extractId, showToast });
   }, []);
 
   const DetailRow = ({ icon, label, value }) => (
