@@ -11,6 +11,7 @@ import { useCustomToast } from "@/context/toast";
 
 //TODO: do better in styling, right now it's all inline
 export default function TransactionsScreen() {
+  const { showToast } = useCustomToast()!;
   const {
     fetchTransactionHistory,
     transactionHistoryData,
@@ -20,11 +21,10 @@ export default function TransactionsScreen() {
     refreshTransactionHistory,
   } = useTransactionStore();
   useEffect(() => {
-    fetchTransactionHistory();
+    fetchTransactionHistory({ showToast });
   }, []);
 
   const insets = useSafeAreaInsets();
-  const { showToast } = useCustomToast()!;
 
   return (
     <YStack f={1} bg="$background" pt={insets.top}>
@@ -38,7 +38,6 @@ export default function TransactionsScreen() {
       ) : (
         <YStack f={1}>
           {renderHeader({ logout })}
-          <Button onPress={() => {}}>Show toast</Button>
           <FlatList
             data={transactionHistoryData}
             renderItem={renderItem}
@@ -47,7 +46,7 @@ export default function TransactionsScreen() {
             refreshControl={
               <RefreshControl
                 refreshing={isRefreshingTransactionHistory}
-                onRefresh={refreshTransactionHistory}
+                onRefresh={() => refreshTransactionHistory({ showToast })}
               />
             }
           />

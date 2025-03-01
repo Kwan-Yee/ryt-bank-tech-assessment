@@ -6,6 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Toast, ToastProvider, ToastViewport } from "@tamagui/toast";
 import { CustomToastProvider } from "@/context/toast";
+import { NetworkMonitor } from "@/components/network-monitoring";
 
 export default function RootLayout() {
   return (
@@ -41,6 +42,7 @@ export default function RootLayout() {
                 }}
               />
             </Stack>
+            <NetworkMonitor />
             <StatusBar style="auto" />
           </CustomToastProvider>
         </SafeAreaProvider>

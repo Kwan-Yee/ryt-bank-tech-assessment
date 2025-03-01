@@ -1,3 +1,4 @@
+import { TShowToast } from "@/context/types";
 import { Href } from "expo-router";
 import { NavigationOptions } from "expo-router/build/global-state/routing";
 
@@ -29,12 +30,21 @@ export interface ITransactionStore {
   isRefreshingTransactionHistory: boolean;
   isFetchingTransactionHistory: boolean;
   isFetchingTransactionItem: boolean;
-  refreshTransactionHistory: () => Promise<void>;
-  fetchTransactionHistory: () => Promise<void>;
-  fetchTransactionItem: ({ id }: { id: string }) => Promise<void>;
-
-  // toast
-  // handleShowToast = () => {
-
-  // }
+  refreshTransactionHistory: ({
+    showToast,
+  }: {
+    showToast: TShowToast["showToast"];
+  }) => Promise<void>;
+  fetchTransactionHistory: ({
+    showToast,
+  }: {
+    showToast: TShowToast["showToast"];
+  }) => Promise<void>;
+  fetchTransactionItem: ({
+    id,
+    showToast,
+  }: {
+    id: string;
+    showToast: TShowToast["showToast"];
+  }) => Promise<void>;
 }

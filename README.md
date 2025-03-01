@@ -12,7 +12,6 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
    ```
    npm run ios // for ios
-   npm run
    ```
 
 # Design Thinking
@@ -34,9 +33,9 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    - Screen 3: Transaction details
      - Details: amount, date, description,type, from who
    - Screen 4 : Settings
-     - ~~[bonus] paginated list (mixed category)~~ [virtualisation abstracted with the use of tamagui list, no need to recreate window redundantly]
-     - ~~[bonus] virtualised list (mixed category)~~ [virtualisation abstracted with the use of tamagui list, no need to recreate window redundantly]
-     - [bonus] enable filtering (category), sorting (date asc, dsc), search
+     - ~~[bonus] paginated list (mixed category)~~ [virtualisation abstracted with the use of tamagui list, no need to recreate windowing redundantly]
+     - ~~[bonus] virtualised list (mixed category)~~ [virtualisation abstracted with the use of tamagui list, no need to recreate windowing redundantly]
+     - ~~[bonus] enable filtering (category), sorting (date asc, dsc), search~~ kinda dont have time for this
      - ~~[bonus] refresh setting in real-time~~ [no need]
      - ~~enable network error experience~~
 

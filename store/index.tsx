@@ -6,6 +6,7 @@ import { handleFetchTransactionHistory } from "./reducers/handle-fetch-transacti
 import { handleFetchTransactionItem } from "./reducers/handle-fetch-transaction-item";
 import { handleLogout } from "./reducers/handle-logout";
 import { handleRefreshTransactionHistory } from "./reducers/handle-refresh-transaction-history";
+import { TShowToast } from "@/context/types";
 
 export const useTransactionStore = create<ITransactionStore>()(
   immer((set) => ({
@@ -30,19 +31,11 @@ export const useTransactionStore = create<ITransactionStore>()(
     isRefreshingTransactionHistory: false,
     isFetchingTransactionHistory: false,
     isFetchingTransactionItem: false,
-    fetchTransactionHistory: async () => handleFetchTransactionHistory(set),
-    refreshTransactionHistory: async () => handleRefreshTransactionHistory(set),
-    fetchTransactionItem: async ({ id }) =>
+    fetchTransactionHistory: async ({ showToast }) =>
+      handleFetchTransactionHistory({ set, showToast }),
+    refreshTransactionHistory: async ({ showToast }) =>
+      handleRefreshTransactionHistory({ set, showToast }),
+    fetchTransactionItem: async ({ id, showToast }) =>
       handleFetchTransactionItem({ id, set }),
-
-    // toast
-    // handleShowToast = () => {
-      //   showToast({
-      //     message: "Your message appears here!",
-      //     type: "success",
-      //     duration: 3000,
-      //   });
-      //   console.log("Toast triggered"); // Add logging to verify function call
-      // };
   }))
 );
