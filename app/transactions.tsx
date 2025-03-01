@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { FlatList, RefreshControl } from "react-native";
 import { Text, YStack, Spinner, Button } from "tamagui";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTransactionStore } from "@/store";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { renderHeader } from "@/components/list-header";
@@ -23,7 +23,7 @@ export default function TransactionsScreen() {
   useEffect(() => {
     fetchTransactionHistory({ showToast });
   }, []);
-
+  const [isMasked, setIsMasked] = useState(true);
   const insets = useSafeAreaInsets();
 
   return (
@@ -37,10 +37,10 @@ export default function TransactionsScreen() {
         </YStack>
       ) : (
         <YStack f={1}>
-          {renderHeader({ logout })}
+          {renderHeader({ logout, isMasked, setIsMasked, showToast })}
           <FlatList
             data={transactionHistoryData}
-            renderItem={renderItem}
+            renderItem={({ item }) => renderItem({ item, isMasked })}
             keyExtractor={(item) => item.id.toString()}
             contentContainerStyle={{ padding: 16 }}
             refreshControl={

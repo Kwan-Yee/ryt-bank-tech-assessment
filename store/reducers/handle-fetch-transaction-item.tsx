@@ -1,3 +1,4 @@
+import { TShowToast } from "@/context/types";
 import { mockHistory } from "../mockHistory";
 import { ITransactionItem, ITransactionStore } from "../types";
 
@@ -7,6 +8,7 @@ export const handleFetchTransactionItem = async ({
 }: {
   id: string;
   set: (fn: (state: ITransactionStore) => void) => void;
+  showToast: TShowToast["showToast"];
 }): Promise<void> => {
   // start
   set((s) => {

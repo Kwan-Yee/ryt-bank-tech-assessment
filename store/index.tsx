@@ -36,6 +36,6 @@ export const useTransactionStore = create<ITransactionStore>()(
     refreshTransactionHistory: async ({ showToast }) =>
       handleRefreshTransactionHistory({ set, showToast }),
     fetchTransactionItem: async ({ id, showToast }) =>
-      handleFetchTransactionItem({ id, set }),
+      handleFetchTransactionItem({ id, set, showToast }),
   }))
 );

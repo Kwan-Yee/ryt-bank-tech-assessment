@@ -3,7 +3,13 @@ import { ChevronRight } from "@tamagui/lucide-icons";
 import { router } from "expo-router";
 import { Card, XStack, YStack, Text } from "tamagui";
 
-export const renderItem = ({ item }: { item: ITransactionItem }) => (
+export const renderItem = ({
+  item,
+  isMasked,
+}: {
+  item: ITransactionItem;
+  isMasked: boolean;
+}) => (
   <Card
     mb="$2"
     p="$4"
@@ -26,7 +32,12 @@ export const renderItem = ({ item }: { item: ITransactionItem }) => (
           fontSize={16}
           color={item.amount < 0 ? "$red10" : "$green10"}
         >
-          {item.amount < 0 ? "-" : "+"}${Math.abs(item.amount).toFixed(2)}
+          {isMasked
+            ? "*****"
+            : item.amount < 0
+            ? `-${Math.abs(item.amount).toFixed(2)}`
+            : `+${Math.abs(item.amount).toFixed(2)}`}
+          $
         </Text>
         <XStack ai="center" o={0.6}>
           <Text fontSize={12} mr="$1">

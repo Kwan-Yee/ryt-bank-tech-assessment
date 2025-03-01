@@ -2,13 +2,14 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-1. Install dependencies
+1. Install expo go
+2. Install dependencies
 
    ```bash
    npm install
    ```
 
-2. run the project
+3. run the project
 
    ```
    npm run ios // for ios
@@ -19,19 +20,18 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 1. **Scopes**
 
    - Screen 1: Login page
-     - biometrics: passcode, faceid, fingerprint
-     - error handling of auth error
+     - [/] biometrics: passcode, faceid, fingerprint
+     - [/] error handling of auth error
    - Screen 2: Transaction history
-     - list of transactions
-     - masked transaction amount
-     - at least 20 transactions
-     - bonus: lets try 10000 transactions
-     - pull-to-refresh to update
-       list
-     - each list item shows: amount, data, description, type
-     - network error handling
+     - [/] list of transactions
+     - [ ] masked transaction amount
+     - [/]  at least 20 transactions
+     ~~- bonus: lets try 10000 transactions~~ 
+     - [/] pull-to-refresh to update list
+     - [/] each list item shows: amount, data, description, type
+     - [/] network error handling
    - Screen 3: Transaction details
-     - Details: amount, date, description,type, from who
+     - [/] Details: amount, date, description,type
    - Screen 4 : Settings
      - ~~[bonus] paginated list (mixed category)~~ [virtualisation abstracted with the use of tamagui list, no need to recreate windowing redundantly]
      - ~~[bonus] virtualised list (mixed category)~~ [virtualisation abstracted with the use of tamagui list, no need to recreate windowing redundantly]
